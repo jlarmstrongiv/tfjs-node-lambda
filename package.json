@@ -18,13 +18,14 @@
   "license": "MIT",
   "author": "John L. Armstrong IV",
   "main": "index.js",
-  "typings": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
+    "@types/prettier": "^2.1.5",
+    "@types/semantic-release": "^17.2.0",
     "commitizen": "^4.2.2",
     "cspell": "^4.2.2",
     "cz-conventional-changelog": "^3.3.0",
@@ -36,6 +37,7 @@
     "sort-package-json": "^1.48.0"
   },
   "optionalDependencies": {
+    "@tensorflow/tfjs": "^2.7.0",
     "@tensorflow/tfjs-node": "^2.7.0"
   }
 }
