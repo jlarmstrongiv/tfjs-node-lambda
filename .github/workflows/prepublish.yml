@@ -1,5 +1,6 @@
-# https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows#example-using-multiple-events-with-activity-types-or-configuration
+name: Prepublish
 
+# https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows#example-using-multiple-events-with-activity-types-or-configuration
 on:
   # Trigger the workflow on push or pull request,
   # but only for the main branch
@@ -18,4 +19,5 @@ jobs:
         run: |
           pwd
           ls -a
+          touch timestamp.txt
           cat timestamp.txt
