@@ -19,6 +19,7 @@ jobs:
         run: |
           pwd
           ls -a
+          ls -a ./.github/actions/matrix
 
       - name: Check timestamp
         # https://unix.stackexchange.com/a/195484
@@ -28,4 +29,4 @@ jobs:
 
       - name: Get matrix
         id: matrix
-        uses: './.github/actions/matrix/action.yml'
+        uses: './.github/actions/matrix'
