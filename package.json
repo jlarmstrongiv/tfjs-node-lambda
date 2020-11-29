@@ -1,7 +1,7 @@
 {
   "name": "tfjs-node-lambda",
   "version": "0.0.0",
-  "description": "",
+  "description": "Loadable @tensorflow/tfjs-node compiled for lambda. Avoid native module errors and package size limits.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
