@@ -1,3 +1,10 @@
 {
-  "ignoreWords": ["tensorflow", "tfjs"]
+  "ignoreWords": ["tensorflow", "tfjs"],
+  "ignorePaths": [
+    "**/package-lock.json",
+    "**/node_modules/**",
+    "**/vscode-extension/**",
+    "**/.git/**",
+    ".vscode"
+  ]
 }
