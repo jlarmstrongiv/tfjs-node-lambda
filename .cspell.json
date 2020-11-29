@@ -5,7 +5,8 @@
     "commitlint",
     "noreply",
     "Brotli",
-    "vercel"
+    "vercel",
+    "lambci"
   ],
   "ignorePaths": [
     "**/.cspell.json",

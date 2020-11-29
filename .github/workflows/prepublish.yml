@@ -25,3 +25,7 @@ jobs:
         run: |
           touch timestamp.txt
           echo "$(<timestamp.txt)"
+
+      - name: Get matrix
+        id: matrix
+        uses: '../actions/matrix/'
