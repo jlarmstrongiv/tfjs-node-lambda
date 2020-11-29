@@ -19,5 +19,9 @@ jobs:
         run: |
           pwd
           ls -a
+
+      - name: Check timestamp
+        # https://unix.stackexchange.com/a/195484
+        run: |
           touch timestamp.txt
-          cat timestamp.txt
+          echo "$(<timestamp.txt)"
