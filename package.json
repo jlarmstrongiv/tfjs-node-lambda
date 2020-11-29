@@ -2,21 +2,26 @@
   "name": "tfjs-node-lambda",
   "version": "0.0.0",
   "description": "Loadable @tensorflow/tfjs-node compiled for lambda. Avoid native module errors and package size limits.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "keywords": [
+    "tensorflow",
+    "nodejs",
+    "lambda"
+  ],
+  "homepage": "https://github.com/jlarmstrongiv/tfjs-node-lambda#readme",
+  "bugs": {
+    "url": "https://github.com/jlarmstrongiv/tfjs-node-lambda/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jlarmstrongiv/tfjs-node-lambda.git"
   },
-  "keywords": [],
+  "license": "MIT",
   "author": "John L. Armstrong IV",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jlarmstrongiv/tfjs-node-lambda/issues"
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "https://github.com/jlarmstrongiv/tfjs-node-lambda#readme",
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
@@ -27,6 +32,10 @@
     "husky": "^4.3.0",
     "lint-staged": "^10.5.2",
     "prettier": "^2.2.1",
-    "semantic-release": "^17.3.0"
+    "semantic-release": "^17.3.0",
+    "sort-package-json": "^1.48.0"
+  },
+  "optionalDependencies": {
+    "@tensorflow/tfjs-node": "^2.7.0"
   }
 }
