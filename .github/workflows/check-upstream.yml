@@ -1,0 +1,34 @@
+name: Check upstream
+
+on:
+  schedule:
+    - cron: '0/5 * * * *'
+
+jobs:
+  timestamp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        # https://stackoverflow.com/a/58393457
+        with:
+          token: ${{ secrets.PAT }}
+
+      - name: List files after checkout
+        run: |
+          pwd
+          ls -a
+
+      - name: Create timestamp
+        run: |
+          touch timestamp.txt
+          date +%c >> timestamp.txt
+
+      - name: Commit and push to github
+        # https://github.community/t/github-actions-bot-email-address/17204/5
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A
+          git-cz --non-interactive --type=ci --subject="ci testing with timestamp.txt"
+          git push

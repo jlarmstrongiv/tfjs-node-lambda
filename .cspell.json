@@ -1,5 +1,5 @@
 {
-  "ignoreWords": ["tensorflow", "tfjs", "commitlint"],
+  "ignoreWords": ["tensorflow", "tfjs", "commitlint", "noreply"],
   "ignorePaths": [
     "**/package-lock.json",
     "**/node_modules/**",
