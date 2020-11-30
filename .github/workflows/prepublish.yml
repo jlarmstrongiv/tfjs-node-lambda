@@ -30,3 +30,9 @@ jobs:
       - name: Get matrix
         id: matrix
         uses: './.github/actions/matrix'
+
+      - name: Print result
+        run: |
+          echo "${{ steps.matrix.outputs.lambda }}"
+          echo "${{ steps.matrix.outputs.tensorflow }}"
+          echo "${{ steps.matrix.outputs.shouldUpdate }}"
