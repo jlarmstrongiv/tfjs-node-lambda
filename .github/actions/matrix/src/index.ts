@@ -5,7 +5,7 @@
 
 import * as core from '@actions/core';
 import main from './main';
-import setOutputs from './setOutputs';
+import setOutputs from '../../shared/setOutputs';
 
 try {
   core.info(`process.cwd() ${process.cwd()}`);

@@ -31,7 +31,11 @@ jobs:
         lambda: ${{ fromJson(needs.matrix.outputs.lambda) }}
         tensorflow: ${{ fromJson(needs.matrix.outputs.tensorflow )}}
     container: lambci/lambda:build-${{ matrix.lambda }}
+
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Echo variables
         run: |
           echo "${{ matrix.lambda }}"

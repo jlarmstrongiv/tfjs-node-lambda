@@ -1,15 +1,18 @@
+// env vars for tensorflow/node version
+// sort package json
+// https://codeburst.io/execa-v2-20ffafeedfdf
+
 import core from '@actions/core';
-import github from '@actions/github';
+import main from './main';
 
 try {
-  // `who-to-greet` input defined in action metadata file
-  const nameToGreet = core.getInput('who-to-greet');
-  console.log(`Hello ${nameToGreet}!`);
-  const time = new Date().toTimeString();
-  core.setOutput('time', time);
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2);
-  console.log(`The event payload: ${payload}`);
+  const lambda = core.getInput('lambda') || process.env.LAMBDA;
+  const tensorflow = core.getInput('tensorflow') || process.env.TENSORFLOW;
+
+  core.info(lambda);
+  core.info(tensorflow);
+
+  main().then(({ stringifiedOutputs, outputs }) => {});
 } catch (error) {
   core.setFailed(error.message);
 }
