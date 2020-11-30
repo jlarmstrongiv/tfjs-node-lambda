@@ -30,7 +30,7 @@ jobs:
         # https://docs.github.com/en/free-pro-team@latest/actions/reference/context-and-expression-syntax-for-github-actions#example-6
         lambda: ${{ fromJson(needs.matrix.outputs.lambda) }}
         tensorflow: ${{ fromJson(needs.matrix.outputs.tensorflow )}}
-    container: lambda:build-${{ matrix.lambda }}
+    container: lambci/lambda:build-${{ matrix.lambda }}
     steps:
       - name: Echo variables
         run: |
