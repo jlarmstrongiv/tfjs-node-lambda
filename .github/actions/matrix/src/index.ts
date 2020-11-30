@@ -1,18 +1,19 @@
 // Not supported by @vercel/ncc
 // import core from '@actions/core';
 // Must use the * syntax
-
 // https://github.com/actions/toolkit
+
 import * as core from '@actions/core';
-import * as github from '@actions/github';
+import main from './main';
+import setOutputs from './setOutputs';
 
 try {
-  core.setOutput('lambda', JSON.stringify(['l1', 'l2']));
-  core.setOutput('tensorflow', JSON.stringify(['l1', 'l2']));
-  core.setOutput('shouldUpdate', 'false');
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2);
-  console.log(`The event payload: ${payload}`);
+  core.info(`process.cwd() ${process.cwd()}`);
+  core.info(`__dirname ${__dirname}`);
+
+  main().then(({ stringifiedOutputs, outputs }) => {
+    setOutputs(stringifiedOutputs);
+  });
 } catch (error) {
   core.setFailed(error.message);
 }

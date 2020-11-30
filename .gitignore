@@ -1,3 +1,6 @@
+# Running @vercel/ncc in package.json creates root dist folder
+/dist
+
 # Commented out dist for github actions
 
 # Created by https://www.toptal.com/developers/gitignore/api/node,now,macos,windows,linux

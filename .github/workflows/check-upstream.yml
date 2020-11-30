@@ -21,16 +21,26 @@ jobs:
           pwd
           ls -a
 
-      - name: Create timestamp
-        run: |
-          touch timestamp.txt
-          date +%c >> timestamp.txt
+      - name: Get matrix
+        id: matrix
+        uses: './.github/actions/matrix'
 
-      - name: Commit and push to github
-        # https://github.community/t/github-actions-bot-email-address/17204/5
-        # git push
+      - name: Print result
         run: |
-          git config user.name github-actions
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add -A
-          npx git-cz --non-interactive --type=ci --subject="ci testing with timestamp.txt"
+          echo "${{ steps.matrix.outputs.lambda }}"
+          echo "${{ steps.matrix.outputs.tensorflow }}"
+          echo "${{ steps.matrix.outputs.shouldUpdate }}"
+
+      - name: Update repo
+        if: ${{ steps.matrix.outputs.shouldUpdate == "true" }}
+        run: |
+          echo "${{ steps.matrix.outputs.shouldUpdate }}"
+
+      # - name: Commit and push to github
+      #   # https://github.community/t/github-actions-bot-email-address/17204/5
+      #   # git push
+      #   run: |
+      #     git config user.name github-actions
+      #     git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+      #     git add -A
+      #     npx git-cz --non-interactive --type=ci --subject="ci testing with timestamp.txt"

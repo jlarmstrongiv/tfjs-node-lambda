@@ -20,19 +20,3 @@ jobs:
           pwd
           ls -a
           ls -a ./.github/actions/matrix
-
-      - name: Check timestamp
-        # https://unix.stackexchange.com/a/195484
-        run: |
-          touch timestamp.txt
-          echo "$(<timestamp.txt)"
-
-      - name: Get matrix
-        id: matrix
-        uses: './.github/actions/matrix'
-
-      - name: Print result
-        run: |
-          echo "${{ steps.matrix.outputs.lambda }}"
-          echo "${{ steps.matrix.outputs.tensorflow }}"
-          echo "${{ steps.matrix.outputs.shouldUpdate }}"

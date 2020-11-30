@@ -6,7 +6,9 @@
     "noreply",
     "Brotli",
     "vercel",
-    "lambci"
+    "lambci",
+    "deduplicate",
+    "deduplicated"
   ],
   "ignorePaths": [
     "**/.cspell.json",
