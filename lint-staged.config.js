@@ -3,4 +3,6 @@ module.exports = {
   'package.json': 'sort-package-json',
   '.github/actions/matrix/src/**/*.ts': () =>
     'npx @vercel/ncc build -m -C .github/actions/matrix/src/index.ts -o .github/actions/matrix/dist',
+  '.github/actions/compile/src/**/*.ts': () =>
+    'npx @vercel/ncc build -m -C .github/actions/compile/src/index.ts -o .github/actions/compile/dist',
 };

@@ -2,17 +2,20 @@
 // sort package json
 // https://codeburst.io/execa-v2-20ffafeedfdf
 
+import path from 'path';
 import core from '@actions/core';
 import main from './main';
 
 try {
-  const lambda = core.getInput('lambda') || process.env.LAMBDA;
-  const tensorflow = core.getInput('tensorflow') || process.env.TENSORFLOW;
+  const lambda = core.getInput('lambda');
+  const tensorflow = core.getInput('tensorflow');
 
   core.info(lambda);
   core.info(tensorflow);
 
-  main().then(({ stringifiedOutputs, outputs }) => {});
+  main({ lambda, tensorflow }).then(({ stringifiedOutputs, outputs }) => {
+    core.setOutput('asset', path.join(process.cwd(), 'binary.txt'));
+  });
 } catch (error) {
   core.setFailed(error.message);
 }

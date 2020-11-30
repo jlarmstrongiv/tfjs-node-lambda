@@ -1,8 +1,3 @@
-// Not supported by @vercel/ncc
-// import core from '@actions/core';
-// Must use the * syntax
-// https://github.com/actions/toolkit
-
 import * as core from '@actions/core';
 import main from './main';
 import setOutputs from '../../shared/setOutputs';

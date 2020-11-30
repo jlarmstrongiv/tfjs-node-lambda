@@ -1,4 +1,4 @@
-name: 'Hello World'
+name: 'Matrix'
 description: 'Retrieve matrix of lambda and tensorflow versions'
 
 outputs:

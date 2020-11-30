@@ -36,8 +36,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Compile
+        id: compile
+        uses: './.github/actions/compile'
+
       - name: Echo variables
         run: |
           echo "${{ matrix.lambda }}"
           echo "${{ matrix.tensorflow }}"
+          echo "${{ steps.compile.outputs.asset }}"
           node -v

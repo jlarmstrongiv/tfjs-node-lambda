@@ -9,7 +9,8 @@
     "lambci",
     "deduplicate",
     "deduplicated",
-    "imagename"
+    "imagename",
+    "Leray"
   ],
   "ignorePaths": [
     "**/.cspell.json",

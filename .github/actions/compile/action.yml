@@ -1,13 +1,15 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Compile'
+description: 'Compile and compress @tensorflow/tfjs-node for AWS Lambda'
 inputs:
-  who-to-greet: # id of input
-    description: 'Who to greet'
+  lambda: # id of input
+    description: 'The lambda node version'
     required: true
-    default: 'World'
+  tensorflow: # id of input
+    description: 'The @tensorflow/tfjs-node version'
+    required: true
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  asset: # id of output
+    description: 'The compiled and compressed @tensorflow/tfjs-node file path'
 runs:
   using: 'node12'
   main: 'index.js'

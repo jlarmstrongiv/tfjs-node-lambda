@@ -1,7 +1,3 @@
-/**
- * No github/actions/toolkit allowed
- * Main should be able to run locally
- */
 import getLambda from './lambda/getLambda';
 import getTensorflow from './tensorflow/getTensorflow';
 import getShouldUpdate from './shouldUpdate/getShouldUpdate';
