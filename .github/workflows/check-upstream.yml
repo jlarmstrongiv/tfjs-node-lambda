@@ -32,7 +32,7 @@ jobs:
           echo "${{ steps.matrix.outputs.shouldUpdate }}"
 
       - name: Update repo
-        if: steps.matrix.outputs.shouldUpdate == 'true'
+        if: steps.matrix.outputs.shouldUpdate == 'false'
         run: |
           echo "${{ steps.matrix.outputs.shouldUpdate }}"
 
