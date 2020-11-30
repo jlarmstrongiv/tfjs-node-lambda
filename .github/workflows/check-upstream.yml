@@ -16,31 +16,16 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
 
-      - name: List files after checkout
-        run: |
-          pwd
-          ls -a
-
       - name: Get matrix
         id: matrix
         uses: './.github/actions/matrix'
 
-      - name: Print result
-        run: |
-          echo "${{ steps.matrix.outputs.lambda }}"
-          echo "${{ steps.matrix.outputs.tensorflow }}"
-          echo "${{ steps.matrix.outputs.shouldUpdate }}"
-
       - name: Update repo
-        if: steps.matrix.outputs.shouldUpdate == 'false'
+        if: steps.matrix.outputs.shouldUpdate == 'true'
+        # # https://github.community/t/github-actions-bot-email-address/17204/5
         run: |
-          echo "${{ steps.matrix.outputs.shouldUpdate }}"
-
-      # - name: Commit and push to github
-      #   # https://github.community/t/github-actions-bot-email-address/17204/5
-      #   # git push
-      #   run: |
-      #     git config user.name github-actions
-      #     git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-      #     git add -A
-      #     npx git-cz --non-interactive --type=ci --subject="ci testing with timestamp.txt"
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A
+          npx git-cz --non-interactive --type=ci --subject="Update with new node or lambda version"
+          git push

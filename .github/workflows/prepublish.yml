@@ -9,14 +9,30 @@ on:
       - main
 
 jobs:
-  echo:
+  matrix:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: List files after checkout
+      - name: Get matrix
+        id: matrix
+        uses: './.github/actions/matrix'
+    outputs:
+      lambda: ${{ steps.matrix.outputs.lambda }}
+      tensorflow: ${{ steps.matrix.outputs.tensorflow }}
+
+  build:
+    needs: matrix
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # https://docs.github.com/en/free-pro-team@latest/actions/reference/context-and-expression-syntax-for-github-actions#example-6
+        lambda: ${{ fromJson(needs.matrix.outputs.lambda) }}
+        tensorflow: ${{ fromJson(needs.matrix.outputs.tensorflow )}}
+    # container: imagename:${{ matrix.version }}
+    steps:
+      - name: Echo variables
         run: |
-          pwd
-          ls -a
-          ls -a ./.github/actions/matrix
+          echo "${{ matrix.lambda }}"
+          echo "${{ matrix.tensorflow }}"

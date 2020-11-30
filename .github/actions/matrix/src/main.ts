@@ -2,9 +2,9 @@
  * No github/actions/toolkit allowed
  * Main should be able to run locally
  */
-import { Outputs } from './outputs';
 import getLambda from './lambda/getLambda';
 import getTensorflow from './tensorflow/getTensorflow';
+import getShouldUpdate from './shouldUpdate/getShouldUpdate';
 
 export default async function main() {
   const [lambda, tensorflow] = await Promise.all([
@@ -13,8 +13,7 @@ export default async function main() {
   ]);
 
   // writes files to repository
-  // const shouldUpdate = await shouldUpdate();
-  const shouldUpdate = true;
+  const shouldUpdate = await getShouldUpdate({ lambda, tensorflow });
 
   const outputs = {
     lambda,

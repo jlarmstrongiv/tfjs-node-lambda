@@ -8,7 +8,8 @@
     "vercel",
     "lambci",
     "deduplicate",
-    "deduplicated"
+    "deduplicated",
+    "imagename"
   ],
   "ignorePaths": [
     "**/.cspell.json",
