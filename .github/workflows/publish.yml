@@ -64,6 +64,7 @@ jobs:
           if-no-files-found: error
           name: '${{ matrix.lambda }}-tf${{ matrix.tensorflow }}.br'
           path: './${{ matrix.lambda }}-tf${{ matrix.tensorflow }}.br'
+          retention-days: 2
 
   publish:
     needs: [matrix, build]
@@ -83,6 +84,12 @@ jobs:
         # https://stackoverflow.com/a/35589472
         run: |
           echo '{"lambda":${{ needs.matrix.outputs.lambda }},"tensorflow":${{ needs.matrix.outputs.tensorflow }}}' >| matrix.json
+
+      - name: Unzip releases, delete zips
+        working-directory: ./tfjs-node-lambda-releases
+        run: |
+          find . -name "*.zip" -exec unzip {} \;
+          find . -name "*.zip" -exec rm -r {} \;
 
       - name: List releases
         working-directory: ./tfjs-node-lambda-releases
