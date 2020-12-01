@@ -1,5 +1,8 @@
 import * as core from '@actions/core';
-import { Outputs } from './outputs';
+
+interface Outputs {
+  [key: string]: string;
+}
 
 export default function setOutputs(outputs: Outputs) {
   Object.entries(outputs).forEach(([key, value]) => {

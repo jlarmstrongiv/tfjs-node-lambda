@@ -3,7 +3,7 @@
 // https://codeburst.io/execa-v2-20ffafeedfdf
 
 import path from 'path';
-import core from '@actions/core';
+import * as core from '@actions/core';
 import main from './main';
 
 try {

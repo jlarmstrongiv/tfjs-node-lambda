@@ -1,6 +1,8 @@
 # Notes
 
-All custom actions must be added to both the `package.json` and `lint-staged.config.ts`.
+All custom actions must be added to both the `package.json` and `lint-staged.config.js`.
+
+Due to `lint-staged.config.js` building only on changed files, no shared directories are allowed.
 
 You must you the `import * as core from '@actions/core'` syntax due to `@vercel/ncc`. You cannot use `import core from '@actions/core'`.
 

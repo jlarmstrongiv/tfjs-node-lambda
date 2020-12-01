@@ -1,6 +1,6 @@
 import * as core from '@actions/core';
 import main from './main';
-import setOutputs from '../../shared/setOutputs';
+import setOutputs from './setOutputs';
 
 try {
   core.info(`process.cwd() ${process.cwd()}`);
