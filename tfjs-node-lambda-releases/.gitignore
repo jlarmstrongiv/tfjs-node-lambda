@@ -1,4 +1,5 @@
 matrix.json
+package-lock.json
 
 # Commented out dist for github actions
 

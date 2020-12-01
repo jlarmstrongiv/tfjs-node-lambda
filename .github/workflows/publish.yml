@@ -56,7 +56,7 @@ jobs:
 
       - name: Log
         run: |
-          ls -A
+          ls -lh
 
       - name: Upload release
         uses: actions/upload-artifact@v2
@@ -87,12 +87,11 @@ jobs:
       - name: List releases
         working-directory: ./tfjs-node-lambda-releases
         run: |
-          echo "demo"
-          ls -A
+          ls -lh
 
       - name: Publish tfjs-node-lambda release
         run: |
-          echo "demo"
+          echo "publish"
 
 # TODO
 # Will semantic release bump npm versions?
