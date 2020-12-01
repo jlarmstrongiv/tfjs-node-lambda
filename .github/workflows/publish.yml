@@ -45,8 +45,6 @@ jobs:
         # https://stackoverflow.com/a/35589472
         run: |
           npm install @tensorflow/tfjs-node@${{ matrix.tensorflow }}
-          ls -A
-          echo $(<package.json)
 
       - name: Compile
         id: compile
@@ -56,13 +54,12 @@ jobs:
           tensorflow: ${{ matrix.tensorflow }}
           binary: '${{ matrix.lambda }}-tf${{ matrix.tensorflow }}.br'
 
-      # Upload binary artifact
-      # Consider uploading the
-      - name: Echo variables
-        run: |
-          echo "${{ matrix.lambda }}"
-          echo "${{ matrix.tensorflow }}"
-          node -v
+      - name: Upload release
+        uses: actions/upload-artifact@v2
+        with:
+          if-no-files-found: error
+          name: ${{ matrix.lambda }}-tf${{ matrix.tensorflow }}.br
+          path: '~/${{ matrix.lambda }}-tf${{ matrix.tensorflow }}.br'
 
   publish:
     needs: [matrix, build]
@@ -72,18 +69,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-        #  echo the outputs from needs.matrix.outputs into a json file
-        # https://github.com/actions/download-artifact#download-all-artifacts
-      - name: Download artifacts
+      - name: Download releases
+        uses: actions/download-artifact@v2
+        with:
+          path: '~/tfjs-node-lambda-releases'
+
+      - name: Add matrix.json
         working-directory: ./tfjs-node-lambda-releases
         # https://stackoverflow.com/a/35589472
         run: |
-          echo "demo"
           echo '{"lambda":${{ needs.matrix.outputs.lambda }},"tensorflow":${{ needs.matrix.outputs.tensorflow }}}' >| matrix.json
-          echo $(<matrix.json)
 
-      - name: Publish tfjs-node-lambda-releases
-        # https://stackoverflow.com/a/58142276
+      - name: List releases
         working-directory: ./tfjs-node-lambda-releases
         run: |
           echo "demo"

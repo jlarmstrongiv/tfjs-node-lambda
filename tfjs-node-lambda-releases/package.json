@@ -17,5 +17,8 @@
   },
   "license": "MIT",
   "author": "John L. Armstrong IV",
-  "main": "index.js"
+  "main": "index.js",
+  "devDependencies": {
+    "tar": "^6.0.5"
+  }
 }

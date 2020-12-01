@@ -1,10 +1,14 @@
+import compress from './compress';
+
 interface MainProps {
   lambda: string;
   tensorflow: string;
   binary: string;
 }
 
-export default async function main({ lambda, tensorflow }: MainProps) {
+export default async function main({ lambda, tensorflow, binary }: MainProps) {
+  await compress(binary);
+
   const outputs = {};
   const stringifiedOutputs = {};
   return { outputs, stringifiedOutputs };
