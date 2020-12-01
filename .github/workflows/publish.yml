@@ -39,6 +39,9 @@ jobs:
       - name: Compile
         id: compile
         uses: './.github/actions/compile'
+        with:
+          lambda: ${{ matrix.lambda }}
+          tensorflow: ${{ matrix.tensorflow }}
 
       - name: Echo variables
         run: |
