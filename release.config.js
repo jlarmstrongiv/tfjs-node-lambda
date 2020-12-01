@@ -1,5 +1,5 @@
 module.exports = {
-  branches: 'master',
+  branches: 'main',
   repositoryUrl: 'https://github.com/jlarmstrongiv/tfjs-node-lambda',
   plugins: [
     '@semantic-release/commit-analyzer',

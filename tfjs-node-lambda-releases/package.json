@@ -1,6 +1,6 @@
 {
   "name": "tfjs-node-lambda-releases",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The matrix of releases for tfjs-node-lambda.",
   "keywords": [
     "tensorflow",
