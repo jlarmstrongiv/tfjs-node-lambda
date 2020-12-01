@@ -1,0 +1,21 @@
+{
+  "name": "tfjs-node-lambda-releases",
+  "version": "0.0.0",
+  "description": "The matrix of releases for tfjs-node-lambda.",
+  "keywords": [
+    "tensorflow",
+    "nodejs",
+    "lambda"
+  ],
+  "homepage": "https://github.com/jlarmstrongiv/tfjs-node-lambda#readme",
+  "bugs": {
+    "url": "https://github.com/jlarmstrongiv/tfjs-node-lambda/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlarmstrongiv/tfjs-node-lambda.git"
+  },
+  "license": "MIT",
+  "author": "John L. Armstrong IV",
+  "main": "index.js"
+}

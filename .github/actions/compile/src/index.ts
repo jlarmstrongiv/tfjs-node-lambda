@@ -1,8 +1,3 @@
-// env vars for tensorflow/node version
-// sort package json
-// https://codeburst.io/execa-v2-20ffafeedfdf
-
-import path from 'path';
 import * as core from '@actions/core';
 import main from './main';
 
@@ -15,9 +10,11 @@ try {
   core.info(tensorflow);
   core.info(binary);
 
-  main({ lambda, tensorflow }).then(({ stringifiedOutputs, outputs }) => {
-    core.setOutput('asset', path.join(process.cwd(), 'binary.txt'));
-  });
+  main({
+    lambda,
+    tensorflow,
+    binary,
+  }).then(({ stringifiedOutputs, outputs }) => {});
 } catch (error) {
   core.setFailed(error.message);
 }

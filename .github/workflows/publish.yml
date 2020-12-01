@@ -11,6 +11,7 @@ on:
 jobs:
   matrix:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -18,6 +19,7 @@ jobs:
       - name: Get matrix
         id: matrix
         uses: './.github/actions/matrix'
+
     outputs:
       lambda: ${{ steps.matrix.outputs.lambda }}
       tensorflow: ${{ steps.matrix.outputs.tensorflow }}
@@ -25,11 +27,13 @@ jobs:
   build:
     needs: matrix
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         # https://docs.github.com/en/free-pro-team@latest/actions/reference/context-and-expression-syntax-for-github-actions#example-6
         lambda: ${{ fromJson(needs.matrix.outputs.lambda) }}
         tensorflow: ${{ fromJson(needs.matrix.outputs.tensorflow )}}
+
     container: lambci/lambda:build-${{ matrix.lambda }}
 
     steps:
@@ -44,9 +48,34 @@ jobs:
           tensorflow: ${{ matrix.tensorflow }}
           binary: '${{ matrix.lambda }}-tf${{ matrix.tensorflow }}.br'
 
+      # Upload binary artifact
+      # Consider uploading the
       - name: Echo variables
         run: |
           echo "${{ matrix.lambda }}"
           echo "${{ matrix.tensorflow }}"
-          echo "${{ steps.compile.outputs.asset }}"
           node -v
+
+  publish:
+    needs: [matrix, build]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+        #  echo the outputs from needs.matrix.outputs
+      - name: Download artifacts
+        run: |
+          echo "demo"
+          echo "{ "lambda": ${{ needs.matrix.outputs.lambda }}, "tensorflow": ${{ needs.matrix.outputs.tensorflow }}}"
+
+      - name: Publish tfjs-node-lambda-releases
+        # https://stackoverflow.com/a/58142276
+        working-directory: ./tfjs-node-lambda-releases
+        run: |
+          echo "demo"
+
+      - name: Publish tfjs-node-lambda release
+        run: |
+          echo "demo"
