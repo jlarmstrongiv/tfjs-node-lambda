@@ -54,6 +54,10 @@ jobs:
           tensorflow: ${{ matrix.tensorflow }}
           binary: '${{ matrix.lambda }}-tf${{ matrix.tensorflow }}.br'
 
+      - name: Log
+        run: |
+          ls -A
+
       - name: Upload release
         uses: actions/upload-artifact@v2
         with:

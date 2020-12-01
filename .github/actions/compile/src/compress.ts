@@ -1,7 +1,3 @@
-// env vars for tensorflow/node version
-// sort package json
-// https://codeburst.io/execa-v2-20ffafeedfdf
-
 import fs from 'fs-extra';
 import path from 'path';
 import zlib from 'zlib';
