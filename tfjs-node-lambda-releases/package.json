@@ -19,7 +19,9 @@
   "author": "John L. Armstrong IV",
   "main": "index.js",
   "devDependencies": {
+    "@types/pump": "^1.1.0",
     "@types/tar": "^4.0.4",
+    "pump": "^3.0.0",
     "tar": "^6.0.5"
   }
 }
