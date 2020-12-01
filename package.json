@@ -1,6 +1,6 @@
 {
   "name": "tfjs-node-lambda",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Loadable @tensorflow/tfjs-node compiled for lambda. Avoid native module errors and package size limits.",
   "keywords": [
     "tensorflow",
