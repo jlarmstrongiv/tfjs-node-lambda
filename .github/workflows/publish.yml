@@ -69,7 +69,7 @@ jobs:
       - name: Download artifacts
         run: |
           echo "demo"
-          echo "{ "lambda": ${{ needs.matrix.outputs.lambda }}, "tensorflow": ${{ needs.matrix.outputs.tensorflow }}}"
+          echo '{ "lambda": ${{ needs.matrix.outputs.lambda }}, "tensorflow": ${{ needs.matrix.outputs.tensorflow }}}'
 
       - name: Publish tfjs-node-lambda-releases
         # https://stackoverflow.com/a/58142276
