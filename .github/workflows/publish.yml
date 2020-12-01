@@ -85,11 +85,13 @@ jobs:
         run: |
           echo '{"lambda":${{ needs.matrix.outputs.lambda }},"tensorflow":${{ needs.matrix.outputs.tensorflow }}}' >| matrix.json
 
-      - name: Unzip releases, delete zips
+      - name: Unzip artifacts, delete zips
         working-directory: ./tfjs-node-lambda-releases
+        # https://stackoverflow.com/a/2374816
+        # https://unix.stackexchange.com/a/89929
         run: |
           find . -name "*.zip" -exec unzip {} \;
-          find . -name "*.zip" -exec rm -r {} \;
+          find . -name "*.zip" -exec rm -rf {} \;
 
       - name: List releases
         working-directory: ./tfjs-node-lambda-releases
