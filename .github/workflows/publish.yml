@@ -40,6 +40,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Install tensorflow
+        working-directory: ./tfjs-node-lambda-releases
+        # https://stackoverflow.com/a/35589472
+        run: |
+          npm install @tensorflow/tfjs-node@${{ matrix.tensorflow }}
+          ls -A
+          echo $(<package.json)
+
       - name: Compile
         id: compile
         uses: './.github/actions/compile'
@@ -67,9 +75,12 @@ jobs:
         #  echo the outputs from needs.matrix.outputs into a json file
         # https://github.com/actions/download-artifact#download-all-artifacts
       - name: Download artifacts
+        working-directory: ./tfjs-node-lambda-releases
+        # https://stackoverflow.com/a/35589472
         run: |
           echo "demo"
-          echo '{ "lambda": ${{ needs.matrix.outputs.lambda }}, "tensorflow": ${{ needs.matrix.outputs.tensorflow }}}'
+          echo '{"lambda":${{ needs.matrix.outputs.lambda }},"tensorflow":${{ needs.matrix.outputs.tensorflow }}}' >| matrix.json
+          echo $(<matrix.json)
 
       - name: Publish tfjs-node-lambda-releases
         # https://stackoverflow.com/a/58142276
@@ -85,3 +96,4 @@ jobs:
 # TODO
 # Will semantic release bump npm versions?
 # Will you need to manually bump tfjs-node-lambda-releases?  In check-upstream workflow?
+# What about when generating that matrix.json file?

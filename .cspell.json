@@ -1,16 +1,17 @@
 {
   "ignoreWords": [
-    "tensorflow",
-    "tfjs",
-    "commitlint",
-    "noreply",
     "Brotli",
-    "vercel",
-    "lambci",
+    "commitlint",
     "deduplicate",
     "deduplicated",
     "imagename",
-    "Leray"
+    "lambci",
+    "Leray",
+    "noreply",
+    "npmignore",
+    "tensorflow",
+    "tfjs",
+    "vercel"
   ],
   "ignorePaths": [
     "**/.cspell.json",
