@@ -14,7 +14,7 @@ export default async function compress(binary): Promise<void> {
 
   return new Promise((resolve, reject) => {
     pump(
-      tar.c({ cwd: TFJS_PATH, sync: true }, ['index.js', 'node_modules']),
+      tar.c({ cwd: TFJS_PATH }, ['index.js', 'node_modules']),
       zlib.createBrotliCompress({
         // https://nodejs.org/api/zlib.html#zlib_class_brotlioptions
         params: {
