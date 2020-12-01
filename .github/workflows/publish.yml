@@ -42,6 +42,7 @@ jobs:
         with:
           lambda: ${{ matrix.lambda }}
           tensorflow: ${{ matrix.tensorflow }}
+          binary: '${{ matrix.lambda }}-tf${{ matrix.tensorflow }}.br'
 
       - name: Echo variables
         run: |

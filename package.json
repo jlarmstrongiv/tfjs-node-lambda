@@ -19,7 +19,7 @@
   "author": "John L. Armstrong IV",
   "main": "index.js",
   "scripts": {
-    "compile": "cross-env NODE_ENV=development LAMBDA=nodejs14.x TENSORFLOW=2.7.0 npx @vercel/ncc run .github/actions/compile/src/main.ts",
+    "compile": "cross-env NODE_ENV=development LAMBDA=nodejs14.x TENSORFLOW=2.7.0 BINARY=nodejs14.x-tf2.7.0.br npx @vercel/ncc run .github/actions/compile/src/main.ts",
     "matrix": "cross-env NODE_ENV=development npx @vercel/ncc run .github/actions/matrix/src/main.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -7,9 +7,10 @@ inputs:
   tensorflow: # id of input
     description: 'The @tensorflow/tfjs-node version'
     required: true
-outputs:
-  asset: # id of output
-    description: 'The compiled and compressed @tensorflow/tfjs-node file path'
+  binary: # id of input
+    description: 'The compressed @tensorflow/tfjs-node project root file path'
+    required: true
+
 runs:
   using: 'node12'
   main: './dist/index.js'
