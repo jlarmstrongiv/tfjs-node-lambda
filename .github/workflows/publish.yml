@@ -101,7 +101,9 @@ jobs:
       - name: Publish tfjs-node-lambda release
         run: |
           echo "publish"
-
+          npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 # TODO
 # Will semantic release bump npm versions?
 # Will you need to manually bump tfjs-node-lambda-releases?  In check-upstream workflow?
