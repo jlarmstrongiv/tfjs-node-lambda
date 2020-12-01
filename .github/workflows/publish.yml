@@ -62,8 +62,8 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           if-no-files-found: error
-          name: ${{ matrix.lambda }}-tf${{ matrix.tensorflow }}.br
-          path: '~/${{ matrix.lambda }}-tf${{ matrix.tensorflow }}.br'
+          name: '${{ matrix.lambda }}-tf${{ matrix.tensorflow }}.br'
+          path: './${{ matrix.lambda }}-tf${{ matrix.tensorflow }}.br'
 
   publish:
     needs: [matrix, build]
@@ -76,7 +76,7 @@ jobs:
       - name: Download releases
         uses: actions/download-artifact@v2
         with:
-          path: '~/tfjs-node-lambda-releases'
+          path: './tfjs-node-lambda-releases'
 
       - name: Add matrix.json
         working-directory: ./tfjs-node-lambda-releases
