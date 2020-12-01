@@ -19,6 +19,7 @@
   "author": "John L. Armstrong IV",
   "main": "index.js",
   "devDependencies": {
+    "@types/tar": "^4.0.4",
     "tar": "^6.0.5"
   }
 }
