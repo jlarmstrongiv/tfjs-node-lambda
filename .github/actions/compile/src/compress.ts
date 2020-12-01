@@ -12,6 +12,8 @@ export default async function compress(binary) {
   const TFJS_PATH = path.join(process.cwd(), 'tfjs-node-lambda-releases');
   const TFJS_FILE_PATH = path.join(process.cwd(), binary);
   core.info('start compiling');
+  core.info(`TFJS_PATH ${TFJS_PATH}`);
+  core.info(`TFJS_FILE_PATH ${TFJS_FILE_PATH}`);
   tar
     .c({ cwd: TFJS_PATH }, ['index.js', 'node_modules'])
     .pipe(
