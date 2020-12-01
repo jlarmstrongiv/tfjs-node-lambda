@@ -1,5 +1,4 @@
 .gitignore
-.npmignore
 README.md
 index.js
 node_modules
