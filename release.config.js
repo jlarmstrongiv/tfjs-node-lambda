@@ -6,9 +6,8 @@ module.exports = {
     [
       '@semantic-release/github',
       {
-        assets: [],
+        assets: ['tfjs-node-lambda-releases/*.br'],
       },
     ],
   ],
-  preset: 'angular',
 };
