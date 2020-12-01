@@ -117,6 +117,7 @@ jobs:
 
       - name: Publish tfjs-node-lambda-releases
         working-directory: ./tfjs-node-lambda-releases
+        # https://github.com/semantic-release/semantic-release/issues/193
         run: |
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
@@ -126,7 +127,3 @@ jobs:
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-# TODO
-# Will semantic release bump npm versions?
-# Will you need to manually bump tfjs-node-lambda-releases?  In check-upstream workflow?
-# What about when generating that matrix.json file?
