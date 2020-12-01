@@ -74,6 +74,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: 'https://registry.npmjs.org'
+
       - name: Download releases
         uses: actions/download-artifact@v2
         with:
@@ -98,13 +104,28 @@ jobs:
         run: |
           ls -lh
 
-      - name: Publish tfjs-node-lambda release
+      - name: Publish tfjs-node-lambda
         run: |
-          echo "publish"
           npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Update tfjs-node-lambda-releases version
+        id: version
+        uses: './.github/actions/release-version'
+
+      - name: Publish tfjs-node-lambda-releases
+        working-directory: ./tfjs-node-lambda-releases
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A
+          npx git-cz --non-interactive --type=ci --subject="Publish ${{ steps.version.outputs.version }}"
+          git push
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 # TODO
 # Will semantic release bump npm versions?
 # Will you need to manually bump tfjs-node-lambda-releases?  In check-upstream workflow?

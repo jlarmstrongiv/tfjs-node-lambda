@@ -1,0 +1,10 @@
+name: 'Release version'
+description: 'Hack to match the version number and publish the release subpackage.'
+
+outputs:
+  version: # id of output
+    description: 'published npm version'
+
+runs:
+  using: 'node12'
+  main: './dist/index.js'

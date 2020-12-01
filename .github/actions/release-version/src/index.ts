@@ -3,7 +3,7 @@ import main from './main';
 import setOutputs from './setOutputs';
 
 try {
-  main().then(({ stringifiedOutputs, outputs }) => {
+  main().then(({ stringifiedOutputs }) => {
     setOutputs(stringifiedOutputs);
   });
 } catch (error) {

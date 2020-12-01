@@ -9,8 +9,10 @@
     "Leray",
     "noreply",
     "npmignore",
+    "subpackage",
     "tensorflow",
     "tfjs",
+    "typeof",
     "vercel"
   ],
   "ignorePaths": [

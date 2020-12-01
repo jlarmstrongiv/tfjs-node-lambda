@@ -26,6 +26,7 @@
   "scripts": {
     "compile": "cross-env NODE_ENV=development LAMBDA=nodejs14.x TENSORFLOW=2.7.0 BINARY=nodejs14.x-tf2.7.0.br npx @vercel/ncc run .github/actions/compile/src/main.ts",
     "matrix": "cross-env NODE_ENV=development npx @vercel/ncc run .github/actions/matrix/src/main.ts",
+    "release-version": "cross-env NODE_ENV=development npx @vercel/ncc run .github/actions/release-version/src/main.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {

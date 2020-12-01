@@ -8,7 +8,7 @@ module.exports = {
     [
       '@semantic-release/github',
       {
-        assets: ['tfjs-node-lambda-releases/*.br', 'matrix.json'],
+        assets: ['**/*.br', 'matrix.json'],
         message:
           'ci: 🎡 release ${nextRelease.version}\n\n${nextRelease.notes}',
       },
