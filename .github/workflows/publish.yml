@@ -64,7 +64,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-        #  echo the outputs from needs.matrix.outputs
+        #  echo the outputs from needs.matrix.outputs into a json file
+        # https://github.com/actions/download-artifact#download-all-artifacts
       - name: Download artifacts
         run: |
           echo "demo"
@@ -75,7 +76,12 @@ jobs:
         working-directory: ./tfjs-node-lambda-releases
         run: |
           echo "demo"
+          ls -A
 
       - name: Publish tfjs-node-lambda release
         run: |
           echo "demo"
+
+# TODO
+# Will semantic release bump npm versions?
+# Will you need to manually bump tfjs-node-lambda-releases?  In check-upstream workflow?

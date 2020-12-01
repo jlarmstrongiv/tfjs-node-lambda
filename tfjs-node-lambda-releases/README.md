@@ -4,7 +4,9 @@ Stub for [`tfjs-node-lambda`](https://www.npmjs.com/package/tfjs-node-lambda).
 
 This package only contains the releases for `tfjs-node-lambda`. A release is the `@tensorflow/tfjs-node` package and its dependencies compiled and exported for AWS Lambda Node, which is bundled with `tar` and then compressed with `brotli` (highest quality).
 
-See the GitHub [repository](https://github.com/jlarmstrongiv/tfjs-node-lambda/blob/main/matrix.json) for version information. This package will always contain a matrix of the currently supported AWS Lambda Node environments and `@tensorflow/tfjs-node` latest major versions. For example:
+See the GitHub [repository](https://github.com/jlarmstrongiv/tfjs-node-lambda/blob/main/matrix.json) for version information. This package will always contain a matrix of the currently supported AWS Lambda Node environments and the `@tensorflow/tfjs-node` latest major versions.
+
+Example matrix:
 
 ```json
 {
@@ -13,7 +15,7 @@ See the GitHub [repository](https://github.com/jlarmstrongiv/tfjs-node-lambda/bl
 }
 ```
 
-Example releases are:
+Example releases:
 
 ```
 nodejs10.x-tf1.7.4.br
