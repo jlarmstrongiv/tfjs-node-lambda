@@ -1,4 +1,4 @@
-name: Prepublish
+name: Publish
 
 # https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows#example-using-multiple-events-with-activity-types-or-configuration
 on:
@@ -54,7 +54,7 @@ jobs:
           tensorflow: ${{ matrix.tensorflow }}
           binary: '${{ matrix.lambda }}-tf${{ matrix.tensorflow }}.br'
 
-      - name: Log
+      - name: List files
         run: |
           ls -lh
 
@@ -96,7 +96,7 @@ jobs:
         # https://stackoverflow.com/a/2374816
         # https://unix.stackexchange.com/a/89929
         run: |
-          find . -name "*.zip" -exec unzip {} \;
+          find . -name "*.zip" -exec unzip -o -j -d {} \;
           find . -name "*.zip" -exec rm -rf {} \;
 
       - name: List releases

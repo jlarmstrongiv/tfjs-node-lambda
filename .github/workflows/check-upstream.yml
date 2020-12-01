@@ -1,8 +1,8 @@
 name: Check upstream
 
 on:
-  # schedule:
-  # - cron: '0 0 * * *'
+  schedule:
+    - cron: '0 0 * * *'
   watch:
     types: [started]
 
