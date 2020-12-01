@@ -6,10 +6,12 @@ import fs from 'fs-extra';
 import path from 'path';
 import zlib from 'zlib';
 import tar from 'tar';
+import * as core from '@actions/core';
 
 export default async function compress(binary) {
   const TFJS_PATH = path.join(process.cwd(), 'tfjs-node-lambda-releases');
   const TFJS_FILE_PATH = path.join(process.cwd(), binary);
+  core.info('start compiling');
   tar
     .c({ cwd: TFJS_PATH }, ['index.js', 'node_modules'])
     .pipe(
@@ -23,4 +25,5 @@ export default async function compress(binary) {
       }),
     )
     .pipe(fs.createWriteStream(TFJS_FILE_PATH));
+  core.info('end compiling');
 }
