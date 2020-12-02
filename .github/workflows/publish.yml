@@ -93,13 +93,10 @@ jobs:
 
       - name: Unzip artifacts, delete zips
         working-directory: ./tfjs-node-lambda-releases
-        # https://stackoverflow.com/a/2374816
-        # https://unix.stackexchange.com/a/89929
+        # https://stackoverflow.com/a/14813275
         run: |
           find . -name '*.zip' -exec sh -c 'unzip -d "`dirname \"{}\"`" "{}"' ';'
-          ls -a
           find . -name '*.zip' -exec sh -c 'rm "`dirname \"{}\"`" "{}"' ';'
-          ls -a
 
       - name: List releases
         working-directory: ./tfjs-node-lambda-releases
