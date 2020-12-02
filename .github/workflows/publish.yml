@@ -97,7 +97,8 @@ jobs:
         # https://unix.stackexchange.com/a/89929
         run: |
           find . -name '*.zip' -exec sh -c 'unzip -d "`dirname \"{}\"`" "{}"' ';'
-          rm *.zip
+          ls -a
+          find . -name '*.zip' -exec sh -c 'rm "`dirname \"{}\"`" "{}"' ';'
           ls -a
 
       - name: List releases
