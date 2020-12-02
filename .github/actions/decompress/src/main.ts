@@ -11,7 +11,10 @@ export default async function main() {
     const fileName = path.basename(release);
     const fileData = await fs.readFile(release);
     await fs.remove(parentFolder);
-    await fs.writeFile(path.join(process.cwd(), fileName), fileData);
+    await fs.writeFile(
+      path.join(process.cwd(), 'tfjs-node-lambda-releases', fileName),
+      fileData,
+    );
   }
 }
 
