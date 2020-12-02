@@ -23,7 +23,7 @@ async function requireTf() {
   return tf;
 }
 
-async function createTfPromise() {
+async function createTfPromise(readStream) {
   // if not in lambda environment, just require the actual package
   // this is useful as a way to bypass tensorflow-lambda in development
   if (!isLambda()) {
@@ -45,9 +45,7 @@ async function createTfPromise() {
     x.on('finish', resolve);
     x.on('error', reject);
 
-    fs.createReadStream(path.join(os.tmpdir(), 'tfjs-node.br'))
-      .pipe(zlib.createBrotliDecompress())
-      .pipe(x);
+    readStream.pipe(zlib.createBrotliDecompress()).pipe(x);
   });
 
   return requireTf();
@@ -55,9 +53,9 @@ async function createTfPromise() {
 
 let tfPromise;
 
-module.exports = function loadTf() {
+module.exports = function loadTf(readStream) {
   if (!tfPromise) {
-    tfPromise = createTfPromise();
+    tfPromise = createTfPromise(readStream);
   }
 
   return tfPromise;
