@@ -95,7 +95,7 @@ jobs:
         working-directory: ./tfjs-node-lambda-releases
         # https://stackoverflow.com/a/14813275
         run: |
-          find . -name '*.zip' -exec sh -c 'unzip -d "`dirname \"{}\"`" "{}"' ';'
+          find . -name '*.zip' -exec sh -c 'unzip -j -d "`dirname \"{}\"`" "{}"' ';'
           find . -name '*.zip' -exec sh -c 'rm "`dirname \"{}\"`" "{}"' ';'
 
       - name: List releases
