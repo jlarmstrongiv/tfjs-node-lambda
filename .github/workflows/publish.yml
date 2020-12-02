@@ -93,10 +93,7 @@ jobs:
 
       - name: Unzip artifacts, delete zips
         id: unzip
-        # uses: './.github/actions/decompress'
-        run: |
-          mv */*
-          find . -type d -empty -delete
+        uses: './.github/actions/decompress'
 
       - name: List releases
         working-directory: ./tfjs-node-lambda-releases
