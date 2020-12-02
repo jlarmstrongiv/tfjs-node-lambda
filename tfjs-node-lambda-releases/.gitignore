@@ -1,5 +1,7 @@
 matrix.json
 package-lock.json
+*.zip
+*.br
 
 # Commented out dist for github actions
 

@@ -3,12 +3,13 @@ import fs from 'fs-extra';
 import fg from 'fast-glob';
 import yauzl from 'yauzl';
 import pump from 'pump';
+import * as core from '@actions/core';
 
 export default async function decompressZips() {
   const zipPaths = await fg([
     path.join(process.cwd(), 'tfjs-node-lambda-releases', '*.zip'),
   ]);
-  console.log(zipPaths);
+  core.info(`zipPaths: ${JSON.stringify(zipPaths)}`);
   for (const zipPath of zipPaths) {
     await decompressZip(zipPath);
   }
@@ -32,18 +33,18 @@ async function decompressZip(zipPath: string): Promise<void> {
             readStream.on('end', function () {
               zipFile.readEntry();
             });
-            const writeStream = fs.createWriteStream(
-              path.join(
-                process.cwd(),
-                'tfjs-node-lambda-releases',
-                entry.fileName,
-              ),
+            core.info(`entry.fileName: ${entry.fileName}`);
+            const filePath = path.join(
+              process.cwd(),
+              'tfjs-node-lambda-releases',
+              entry.fileName,
             );
+            core.info(`filePath: ${filePath}`);
+            const writeStream = fs.createWriteStream(filePath);
             pump(readStream, writeStream, (error) => {
               if (error) throw reject(error);
               resolve();
             });
-            readStream.pipe(writeStream);
           });
         }
       });
