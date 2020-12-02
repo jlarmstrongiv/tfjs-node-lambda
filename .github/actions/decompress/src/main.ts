@@ -1,6 +1,7 @@
 import fg from 'fast-glob';
 import path from 'path';
 import fs from 'fs-extra';
+import rimraf from 'rimraf';
 import * as core from '@actions/core';
 
 export default async function main() {
@@ -10,7 +11,7 @@ export default async function main() {
     const parentFolder = path.basename(path.dirname(release));
     const fileName = path.basename(release);
     const fileData = await fs.readFile(release);
-    await fs.remove(parentFolder);
+    rimraf.sync(parentFolder);
     await fs.writeFile(
       path.join(process.cwd(), 'tfjs-node-lambda-releases', fileName),
       fileData,
