@@ -96,7 +96,11 @@ jobs:
         # https://stackoverflow.com/a/14813275
         run: |
           find . -name '*.zip' -exec sh -c 'unzip -j -d "`dirname \"{}\"`" "{}"' ';'
+          ls
           find . -name '*.zip' -exec sh -c 'rm "`dirname \"{}\"`" "{}"' ';'
+          ls
+          mv */* .
+          ls
 
       - name: List releases
         working-directory: ./tfjs-node-lambda-releases
