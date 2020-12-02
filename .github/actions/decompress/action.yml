@@ -1,6 +1,0 @@
-name: 'Decompress'
-description: 'Decompress and delete artifact zips'
-
-runs:
-  using: 'node12'
-  main: './dist/index.js'

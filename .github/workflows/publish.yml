@@ -62,7 +62,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           if-no-files-found: error
-          name: '${{ matrix.lambda }}-tf${{ matrix.tensorflow }}.br'
+          name: '${{ matrix.lambda }}-tf${{ matrix.tensorflow }}'
           path: './${{ matrix.lambda }}-tf${{ matrix.tensorflow }}.br'
           retention-days: 2
 
@@ -91,14 +91,17 @@ jobs:
         run: |
           echo '{"lambda":${{ needs.matrix.outputs.lambda }},"tensorflow":${{ needs.matrix.outputs.tensorflow }}}' >| matrix.json
 
-      - name: Unzip artifacts, delete zips
-        id: unzip
-        uses: './.github/actions/decompress'
-
       - name: List releases
         working-directory: ./tfjs-node-lambda-releases
         run: |
           ls -lh
+
+      - name: Fix folder structure
+        working-directory: ./tfjs-node-lambda-releases
+        # https://unix.stackexchange.com/a/584986
+        run: |
+          mv */* .
+          find . -type d -empty -delete
 
       - name: Publish tfjs-node-lambda
         run: |
