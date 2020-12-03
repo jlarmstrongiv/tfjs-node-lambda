@@ -7,6 +7,4 @@ module.exports = {
     'npx @vercel/ncc build -m -C .github/actions/compile/src/index.ts -o .github/actions/compile/dist',
   '.github/actions/release-version/src/**/*.ts': () =>
     'npx @vercel/ncc build -m -C .github/actions/release-version/src/index.ts -o .github/actions/release-version/dist',
-  '.github/actions/decompress/src/**/*.ts': () =>
-    'npx @vercel/ncc build -m -C .github/actions/decompress/src/index.ts -o .github/actions/decompress/dist',
 };

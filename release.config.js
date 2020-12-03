@@ -5,7 +5,6 @@ module.exports = {
     [
       '@semantic-release/commit-analyzer',
       {
-        preset: 'angular',
         releaseRules: [
           // custom
           { type: 'chore', release: 'patch' },

@@ -2,6 +2,8 @@
 
 All custom actions must be added to both the `package.json` and `lint-staged.config.js`.
 
+The `tsconfig.json` file in root applies to the custom actions.
+
 Each action must have an `index.ts` and a `main.ts`. The `main.ts` is meant to run locally, while the `index.ts` is meant to run with the GitHub Actions Toolkit on the cloud. Try to keep as much as possible in `main.ts`.
 
 ## Lint-staged
