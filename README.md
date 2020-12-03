@@ -55,7 +55,7 @@ import loadTf from 'tfjs-node-lambda';
 const tf: typeof import('@tensorflow/tfjs') = await loadTf(readStream);
 ```
 
-The [`tfjs-node-lambda-helpers`](https://www.npmjs.com/package/tfjs-node-lambda-helpers) can help determine environments, generate urls, download releases, and avoid timeouts. If you would prefer to have full control, see the readStream examples below.
+The [`tfjs-node-lambda-helpers`](https://www.npmjs.com/package/tfjs-node-lambda-helpers) can help determine environments, generate release urls, download releases, and avoid timeouts. If you would prefer to have full control, see the readStream examples below.
 
 #### readStream
 
@@ -100,3 +100,5 @@ const tf: typeof import('@tensorflow/tfjs') = await loadTf(readStream);
 ## Contributing
 
 We welcome contributions!
+
+Inspired by and originally forked from Luc Leray’s [tensorflow-lambda](https://www.npmjs.com/package/tensorflow-lambda).
