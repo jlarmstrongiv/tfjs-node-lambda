@@ -40,20 +40,53 @@ npm install --save --save-exact tfjs-node-lambda tfjs-node-lambda-helpers
 npm install --save-dev --save-exact tfjs-node-lambda-releases @tensorflow/tfjs-node @tensorflow/tfjs
 ```
 
-### tfjs-node-lambda
+### Related libraries
+
+- [tfjs-node-lambda](https://www.npmjs.com/package/tfjs-node-lambda)
+- [tfjs-node-lambda-releases](https://www.npmjs.com/package/tfjs-node-lambda-releases)
+- [tfjs-node-lambda-helpers](https://www.npmjs.com/package/tfjs-node-lambda-helpers)
+- [@tensorflow/tfjs-node](https://www.npmjs.com/package/@tensorflow/tfjs-node)
+- [@tensorflow/tfjs](https://www.npmjs.com/package/@tensorflow/tfjs)
+
+## tfjs-node-lambda
 
 ```ts
 import loadTf from 'tfjs-node-lambda';
+const tf: typeof import('@tensorflow/tfjs') = await loadTf(readStream);
 ```
 
-Before running loadTf, you must ensure that the correct release is downloaded to the tmp dir. Use the [`tfjs-node-lambda-helpers`](https://www.npmjs.com/package/tfjs-node-lambda-helpers) to do it for you.
+The [`tfjs-node-lambda-helpers`](https://www.npmjs.com/package/tfjs-node-lambda-helpers) can help determine environments, generate urls, download releases, and avoid timeouts. If you would prefer to have full control, see the readStream examples below.
 
-TODO: recognize `tfjs-node.br` as well as all release package names in the tmp dir.
+#### readStream
 
-### JavaScript
+In development, `loadTf` will run your locally installed version of `@tensorflow/tfjs-node`. If running in an AWS Lambda environment, `loadTf` expects a readStream of the release:
+
+```ts
+import fs from 'fs';
+
+const response = await axios.get(
+  'https://github.com/jlarmstrongiv/tfjs-node-lambda/releases/download/v1.5.0/nodejs12.x-tf2.7.0.br',
+  { responseType: 'arraybuffer' },
+);
+
+const readStream = fs.createReadStream(response.data);
+```
+
+Or, if you have saved the file to the tmp directory:
+
+```ts
+import os from 'os';
+import path from 'path';
+
+const readStream = fs.createReadStream(
+  path.join(os.tmpdir(), 'nodejs12.x-tf2.7.0.br'),
+);
+```
+
+#### JavaScript
 
 ```js
-const tf = await loadTf();
+const tf = await loadTf(readStream);
 ```
 
 #### TypeScript
@@ -61,17 +94,9 @@ const tf = await loadTf();
 Due to having multiple supported versions of `@tensorflow/tfjs-node` and an irregular bundle method, you must specify the types:
 
 ```ts
-const tf: typeof import('@tensorflow/tfjs') = await loadTf();
+const tf: typeof import('@tensorflow/tfjs') = await loadTf(readStream);
 ```
-
-### tfjs-node-lambda-helpers
-
-See the [npm](https://www.npmjs.com/package/tfjs-node-lambda-helpers) package for more documentation.
 
 ## Contributing
 
 We welcome contributions!
-
-### Committing
-
-We use husky git hooks to automate commitizen. Due to this [issue](https://github.com/commitizen/cz-cli/issues/558), we recommend running `git commit -m "any or empty message"` and following the interactive mode. Thank you!

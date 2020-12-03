@@ -1,5 +1,6 @@
 {
   "ignoreWords": [
+    "arraybuffer",
     "Brotli",
     "commitlint",
     "deduplicate",
@@ -12,6 +13,7 @@
     "subpackage",
     "tensorflow",
     "tfjs",
+    "tmpdir",
     "typeof",
     "vercel"
   ],

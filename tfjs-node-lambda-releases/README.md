@@ -1,7 +1,5 @@
 # tfjs-node-lambda-releases
 
-Stub for [`tfjs-node-lambda`](https://www.npmjs.com/package/tfjs-node-lambda).
-
 This package only contains the releases for `tfjs-node-lambda`. A release is the `@tensorflow/tfjs-node` package and its dependencies compiled and exported for AWS Lambda Node, which is bundled with `tar` and then compressed with `brotli` (highest quality).
 
 See the GitHub [repository](https://github.com/jlarmstrongiv/tfjs-node-lambda/blob/main/matrix.json) for version information. This package will always contain a matrix of the currently supported AWS Lambda Node environments and the `@tensorflow/tfjs-node` latest major versions.
@@ -27,8 +25,16 @@ nodejs12.x-tf2.7.0.br
 Using GitHub actions, these versions are updated daily around midnight. Lock your version by running:
 
 ```bash
-npm install --save --save-exact tfjs-node-lambda
-npm install --save-dev --save-exact tfjs-node-lambda-releases
+npm install --save --save-exact tfjs-node-lambda tfjs-node-lambda-helpers
+npm install --save-dev --save-exact tfjs-node-lambda-releases @tensorflow/tfjs-node @tensorflow/tfjs
 ```
 
 Double check that you installed matching version numbers for both.
+
+### Related libraries
+
+- [tfjs-node-lambda](https://www.npmjs.com/package/tfjs-node-lambda)
+- [tfjs-node-lambda-releases](https://www.npmjs.com/package/tfjs-node-lambda-releases)
+- [tfjs-node-lambda-helpers](https://www.npmjs.com/package/tfjs-node-lambda-helpers)
+- [@tensorflow/tfjs-node](https://www.npmjs.com/package/@tensorflow/tfjs-node)
+- [@tensorflow/tfjs](https://www.npmjs.com/package/@tensorflow/tfjs)
