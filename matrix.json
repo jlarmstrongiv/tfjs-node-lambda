@@ -1,4 +1,10 @@
 {
-  "lambda": ["nodejs10.x", "nodejs12.x"],
-  "tensorflow": ["1.7.4", "2.7.0"]
+  "lambda": [
+    "nodejs10.x",
+    "nodejs12.x"
+  ],
+  "tensorflow": [
+    "1.7.4",
+    "2.8.0"
+  ]
 }
