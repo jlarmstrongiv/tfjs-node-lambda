@@ -18,7 +18,7 @@ Example matrix:
 ```json
 {
   "lambda": ["nodejs10.x", "nodejs12.x"],
-  "tensorflow": ["1.7.4", "2.7.0"]
+  "tensorflow": ["1.7.4", "2.8.5", "3.0.0"]
 }
 ```
 
@@ -26,24 +26,29 @@ Example releases:
 
 ```
 nodejs10.x-tf1.7.4.br
-nodejs10.x-tf2.7.0.br
+nodejs10.x-tf2.8.5.br
+nodejs10.x-tf3.0.0.br
 nodejs12.x-tf1.7.4.br
-nodejs12.x-tf2.7.0.br
+nodejs12.x-tf2.8.5.br
+nodejs12.x-tf3.0.0.br
 ```
 
-Using GitHub actions, these versions are updated daily around midnight. Lock your versions with the `--save-exact` flag. Double check `tfjs-node-lambda` and `tfjs-node-lambda-releases` are the same matching versions.
+Using GitHub actions, these versions are updated daily around midnight. Lock your versions with the `--save-exact` flag.
+
+<!-- Double check `tfjs-node-lambda` and `tfjs-node-lambda-releases` are the same matching versions. -->
 
 ## Installation
 
 ```bash
 npm install --save --save-exact tfjs-node-lambda tfjs-node-lambda-helpers
-npm install --save-dev --save-exact tfjs-node-lambda-releases @tensorflow/tfjs-node @tensorflow/tfjs
+npm install --save-dev --save-exact @tensorflow/tfjs-node @tensorflow/tfjs
 ```
+
+<!-- tfjs-node-lambda-releases -->
 
 ### Related libraries
 
 - [tfjs-node-lambda](https://www.npmjs.com/package/tfjs-node-lambda)
-- [tfjs-node-lambda-releases](https://www.npmjs.com/package/tfjs-node-lambda-releases)
 - [tfjs-node-lambda-helpers](https://www.npmjs.com/package/tfjs-node-lambda-helpers)
 - [@tensorflow/tfjs-node](https://www.npmjs.com/package/@tensorflow/tfjs-node)
 - [@tensorflow/tfjs](https://www.npmjs.com/package/@tensorflow/tfjs)
@@ -102,3 +107,5 @@ const tf: typeof import('@tensorflow/tfjs') = await loadTf(readStream);
 We welcome contributions!
 
 Inspired by and originally forked from Luc Leray’s [tensorflow-lambda](https://www.npmjs.com/package/tensorflow-lambda).
+
+†[tfjs-node-lambda-releases](https://www.npmjs.com/package/tfjs-node-lambda-releases) is soft deprecated. Due to file size limitations, 6 releases are too big to be published on npm. Use the assets on [GitHub Releases](https://github.com/jlarmstrongiv/tfjs-node-lambda/releases) instead.

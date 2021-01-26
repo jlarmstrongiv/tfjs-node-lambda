@@ -120,13 +120,13 @@ jobs:
         working-directory: ./tfjs-node-lambda-releases
         # https://github.com/semantic-release/semantic-release/issues/193
         # TODO: Deprecate tfjs-node-lambda-releases
-        # https://stackoverflow.com/a/61488783
-        # npm publish -timeout=9999999
         run: |
           git config user.name github-actions
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add -A
           npx git-cz --non-interactive --type=ci --subject="Publish ${{ steps.version.outputs.version }}"
           git push
+          npx rimraf *.br
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

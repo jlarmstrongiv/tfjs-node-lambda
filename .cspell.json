@@ -11,6 +11,7 @@
     "Leray’s",
     "noreply",
     "npmignore",
+    "rimraf",
     "subpackage",
     "tensorflow",
     "tfjs",
