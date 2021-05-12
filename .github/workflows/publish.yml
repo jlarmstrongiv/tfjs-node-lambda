@@ -34,7 +34,7 @@ jobs:
         lambda: ${{ fromJson(needs.matrix.outputs.lambda) }}
         tensorflow: ${{ fromJson(needs.matrix.outputs.tensorflow )}}
 
-    container: lambci/lambda:build-${{ matrix.lambda }}
+    container: amazon/aws-lambda-nodejs:${{ matrix.lambda }}
 
     steps:
       - name: Checkout

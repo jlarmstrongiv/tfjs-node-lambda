@@ -3,7 +3,7 @@ description: 'Retrieve matrix of lambda and tensorflow versions'
 
 outputs:
   lambda: # id of output
-    description: 'lambci/docker-lambda node versions'
+    description: 'amazon/aws-lambda-nodejs node versions'
   tensorflow: # id of output
     description: '@tensorflow/tfjs-node versions'
   shouldUpdate: # id of output

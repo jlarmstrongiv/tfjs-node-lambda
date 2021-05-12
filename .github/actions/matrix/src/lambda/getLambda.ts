@@ -1,9 +1,18 @@
-import getAllVersions from './getAllVersions';
-import getCurrentVersions from './getCurrentVersions';
+import axios from 'axios';
 
 export default async function getLambda(): Promise<string[]> {
-  const allVersions = await getAllVersions();
-  const currentVersions = await getCurrentVersions(allVersions);
+  const awsDocsResponse = await axios.get(
+    'https://raw.githack.com/awsdocs/aws-lambda-developer-guide/main/doc_source/lambda-runtimes.md',
+  );
+  const awsDocs = awsDocsResponse.data as string;
 
-  return currentVersions;
+  const lambdaRegex = /`nodejs\d+\.[\dx]+`/g;
+
+  const roughMatches = awsDocs.match(lambdaRegex);
+  const roughUniqueMatches = [...new Set(roughMatches)];
+  const matches = roughUniqueMatches.map((roughMatch) =>
+    roughMatch.replace(/`/g, '').replace('nodejs', '').replace('.x', ''),
+  );
+
+  return matches;
 }
