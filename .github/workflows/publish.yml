@@ -49,7 +49,7 @@ jobs:
         working-directory: ./tfjs-node-lambda-releases
         # https://stackoverflow.com/a/35589472
         run: |
-          npm install @tensorflow/tfjs-node@${{ matrix.tensorflow }}
+          npm install --build-from-source @tensorflow/tfjs-node@${{ matrix.tensorflow }}
 
       - name: Compile
         id: compile
