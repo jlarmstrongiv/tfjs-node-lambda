@@ -39,7 +39,7 @@ jobs:
     steps:
       - name: Install tar
         run: |
-          yum install tar
+          yum install tar -y
 
       - name: Checkout
         uses: actions/checkout@v2
