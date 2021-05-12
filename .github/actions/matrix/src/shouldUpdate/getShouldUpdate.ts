@@ -19,6 +19,9 @@ export default async function getShouldUpdate({
   lambda,
   tensorflow,
 }): Promise<Boolean> {
+  // keep format for backwards compatibility nodejs10.x-tf1.7.4.br
+  lambda = lambda.map((version) => `nodejs${version}.x`);
+
   // must be generated at runtime
   const CONFIG_PATH = path.join(process.cwd(), CONFIG_FILE);
 
