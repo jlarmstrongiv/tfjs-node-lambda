@@ -37,9 +37,10 @@ jobs:
     container: amazon/aws-lambda-nodejs:${{ matrix.lambda }}
 
     steps:
-      - name: Install tar
+      - name: Install dependencies with yum
         run: |
           yum install tar -y
+          yum install git -y
 
       - name: Checkout
         uses: actions/checkout@v2
