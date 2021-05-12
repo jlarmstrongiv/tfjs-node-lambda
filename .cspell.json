@@ -5,6 +5,7 @@
     "commitlint",
     "deduplicate",
     "deduplicated",
+    "groupinstall",
     "imagename",
     "lambci",
     "Leray",

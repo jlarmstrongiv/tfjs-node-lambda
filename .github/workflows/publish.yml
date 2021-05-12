@@ -38,9 +38,12 @@ jobs:
 
     steps:
       - name: Install dependencies with yum
+        # https://stackoverflow.com/a/14668751
         run: |
           yum install tar -y
           yum install git -y
+          yum groupinstall "Development Tools" -y
+          yum install python3 -y
 
       - name: Checkout
         uses: actions/checkout@v2
