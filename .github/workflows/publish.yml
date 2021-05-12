@@ -37,6 +37,11 @@ jobs:
     container: amazon/aws-lambda-nodejs:${{ matrix.lambda }}
 
     steps:
+      - name: Install tar
+        run: |
+          apt-get update -y
+          apt-get install tar -y
+
       - name: Checkout
         uses: actions/checkout@v2
 
