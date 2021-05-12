@@ -2,7 +2,7 @@ import * as core from '@actions/core';
 import main from './main';
 
 try {
-  const lambda = core.getInput('lambda');
+  const lambda = `nodejs${core.getInput('lambda')}.x`;
   const tensorflow = core.getInput('tensorflow');
   const binary = core.getInput('binary');
 
