@@ -61,7 +61,8 @@ jobs:
         with:
           lambda: ${{ matrix.lambda }}
           tensorflow: ${{ matrix.tensorflow }}
-          binary: '${{ matrix.lambda }}-tf${{ matrix.tensorflow }}.br'
+          # keep format for backwards compatibility nodejs10.x-tf1.7.4.br
+          binary: 'nodejs${{ matrix.lambda }}.x-tf${{ matrix.tensorflow }}.br'
 
       - name: List files
         run: |
@@ -71,8 +72,9 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           if-no-files-found: error
-          name: '${{ matrix.lambda }}-tf${{ matrix.tensorflow }}'
-          path: './${{ matrix.lambda }}-tf${{ matrix.tensorflow }}.br'
+          # keep format for backwards compatibility nodejs10.x-tf1.7.4.br
+          name: 'nodejs${{ matrix.lambda }}.x-tf${{ matrix.tensorflow }}'
+          path: './nodejs${{ matrix.lambda }}.x-tf${{ matrix.tensorflow }}.br'
           retention-days: 2
 
   publish:
@@ -97,8 +99,9 @@ jobs:
       - name: Add matrix.json
         working-directory: ./tfjs-node-lambda-releases
         # https://stackoverflow.com/a/35589472
+        # keep format for backwards compatibility nodejs10.x-tf1.7.4.br
         run: |
-          echo '{"lambda":${{ needs.matrix.outputs.lambda }},"tensorflow":${{ needs.matrix.outputs.tensorflow }}}' >| matrix.json
+          echo '{"lambda":'$(node --print 'JSON.stringify(${{ needs.matrix.outputs.lambda }}.map(version => `nodejs${version}.x`))')',"tensorflow":${{ needs.matrix.outputs.tensorflow }}}' >| matrix.json
 
       - name: Fix folder structure
         working-directory: ./tfjs-node-lambda-releases
