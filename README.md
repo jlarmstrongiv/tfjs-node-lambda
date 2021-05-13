@@ -18,7 +18,7 @@ Example matrix:
 ```json
 {
   "lambda": ["nodejs10.x", "nodejs12.x", "nodejs14.x"],
-  "tensorflow": ["1.7.4", "2.8.5", "3.0.0"]
+  "tensorflow": ["1.7.4", "2.8.6", "3.6.1"]
 }
 ```
 
@@ -26,11 +26,16 @@ Example releases:
 
 ```
 nodejs10.x-tf1.7.4.br
-nodejs10.x-tf2.8.5.br
-nodejs10.x-tf3.0.0.br
+nodejs10.x-tf2.8.6.br
+nodejs10.x-tf3.6.1.br
+
 nodejs12.x-tf1.7.4.br
-nodejs12.x-tf2.8.5.br
-nodejs12.x-tf3.0.0.br
+nodejs12.x-tf2.8.6.br
+nodejs12.x-tf3.6.1.br
+
+nodejs14.x-tf1.7.4.br
+nodejs14.x-tf2.8.6.br
+nodejs14.x-tf3.6.1.br
 ```
 
 Using GitHub actions, these versions are updated daily around midnight. Lock your versions with the `--save-exact` flag.
@@ -70,7 +75,7 @@ In development, `loadTf` will run your locally installed version of `@tensorflow
 import { Readable } from 'stream';
 
 const response = await axios.get(
-  'https://github.com/jlarmstrongiv/tfjs-node-lambda/releases/download/v1.5.0/nodejs12.x-tf2.7.0.br',
+  'https://github.com/jlarmstrongiv/tfjs-node-lambda/releases/download/v2.0.10/nodejs12.x-tf2.8.6.br',
   { responseType: 'arraybuffer' },
 );
 
@@ -84,7 +89,7 @@ import os from 'os';
 import path from 'path';
 
 const readStream = fs.createReadStream(
-  path.join(os.tmpdir(), 'nodejs12.x-tf2.7.0.br'),
+  path.join(os.tmpdir(), 'nodejs12.x-tf2.8.6.br'),
 );
 ```
 
