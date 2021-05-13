@@ -17,7 +17,7 @@ Example matrix:
 
 ```json
 {
-  "lambda": ["nodejs10.x", "nodejs12.x"],
+  "lambda": ["nodejs10.x", "nodejs12.x", "nodejs14.x"],
   "tensorflow": ["1.7.4", "2.8.5", "3.0.0"]
 }
 ```
@@ -67,14 +67,14 @@ The [`tfjs-node-lambda-helpers`](https://www.npmjs.com/package/tfjs-node-lambda-
 In development, `loadTf` will run your locally installed version of `@tensorflow/tfjs-node`. If running in an AWS Lambda environment, `loadTf` expects a readStream of the release:
 
 ```ts
-import fs from 'fs';
+import { Readable } from 'stream';
 
 const response = await axios.get(
   'https://github.com/jlarmstrongiv/tfjs-node-lambda/releases/download/v1.5.0/nodejs12.x-tf2.7.0.br',
   { responseType: 'arraybuffer' },
 );
 
-const readStream = fs.createReadStream(response.data);
+const readStream = Readable.from(response.data);
 ```
 
 Or, if you have saved the file to the tmp directory:
