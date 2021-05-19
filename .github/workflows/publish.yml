@@ -54,6 +54,9 @@ jobs:
         # https://stackoverflow.com/a/35589472
         run: |
           npm install --build-from-source @tensorflow/tfjs-node@${{ matrix.tensorflow }}
+          npx modclean@3.0.0-beta.1 -n default:caution --no-progress --run
+          rm -rf node_modules/@tensorflow/tfjs-backend-webgl
+          rm -rf node_modules/@tensorflow/tfjs-converter
 
       - name: Compile
         id: compile

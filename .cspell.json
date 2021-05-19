@@ -18,7 +18,8 @@
     "tfjs",
     "tmpdir",
     "typeof",
-    "vercel"
+    "vercel",
+    "webgl"
   ],
   "ignorePaths": [
     "**/.cspell.json",
