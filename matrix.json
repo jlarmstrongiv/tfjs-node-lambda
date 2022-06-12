@@ -1,8 +1,12 @@
 {
   "lambda": [
+    "nodejs16.x",
     "nodejs14.x",
     "nodejs12.x",
-    "nodejs10.x"
+    "nodejs10.x",
+    "nodejs8.10.x",
+    "nodejs6.10.x",
+    "nodejs4.3.x"
   ],
   "tensorflow": [
     "1.7.4",
