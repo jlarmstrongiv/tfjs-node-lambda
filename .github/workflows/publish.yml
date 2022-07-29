@@ -31,7 +31,7 @@ jobs:
     strategy:
       matrix:
         # https://docs.github.com/en/free-pro-team@latest/actions/reference/context-and-expression-syntax-for-github-actions#example-6
-        lambda: ${{ fromJson(needs.matrix.outputs.lambda) }}
+        lambda: ["16", "14"]
         tensorflow: ${{ fromJson(needs.matrix.outputs.tensorflow )}}
 
     container: amazon/aws-lambda-nodejs:${{ matrix.lambda }}
